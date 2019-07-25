@@ -5,14 +5,13 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:birthdate) %></th>
-      <th><%= model_class.human_attribute_name(:national_registry_code) %></th>
-      <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:bus_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>Identificador</th>
+      <th>Nome</th>
+      <th>Data de nascimento</th>
+      <th>Documento</th>
+      <th>E-mail</th>
+      <th>Onibus</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -20,11 +19,10 @@
       <tr>
         <td><%= link_to passenger.id, passenger_path(passenger) %></td>
         <td><%= passenger.name %></td>
-        <td><%= passenger.birthdate %></td>
+        <td><%= passenger.birthdate.strftime("%d/%m/%Y") %></td>
         <td><%= passenger.national_registry_code %></td>
         <td><%= passenger.email %></td>
-        <td><%= passenger.bus_id %></td>
-        <td><%=l passenger.created_at %></td>
+        <td><%= passenger.bus.name %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       passenger_path(passenger), :class => 'btn btn-default btn-xs' %>

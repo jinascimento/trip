@@ -16,44 +16,41 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
+    <%= f.label :nome, :class => 'control-label col-lg-2', required: true %>
+    <div class="col-lg-4">
       <%= f.text_field :name, :class => 'form-control' %>
     </div>
-    <%=f.error_span(:name) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :birthdate, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :birthdate, :class => 'form-control' %>
+    <%= f.label :'Data de Nascimento', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.date_field :birthdate, :class => 'form-control', required: true %>
     </div>
+
+    <%=f.error_span(:name) %>
     <%=f.error_span(:birthdate) %>
   </div>
   <div class="form-group">
-    <%= f.label :national_registry_code, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :national_registry_code, :class => 'form-control' %>
+    <%= f.label :'Número de documento', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.number_field :national_registry_code, :class => 'form-control', required: true %>
     </div>
+    <%= f.label :'E-mail', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :email, :class => 'form-control', type: 'email', required: true %>
+    </div>
+    <%=f.error_span(:email) %>
     <%=f.error_span(:national_registry_code) %>
   </div>
   <div class="form-group">
-    <%= f.label :email, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :email, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:email) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :bus_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :bus_id, :class => 'form-control' %>
+    <%= f.label :'Identificador de Ônibus', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.collection_select :bus_id, Bus.order(:name), :id, :name, {include_blank: true}, {class: 'form-control' } %>
     </div>
     <%=f.error_span(:bus_id) %>
   </div>
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= f.submit 'Salvar', :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 passengers_path, :class => 'btn btn-default' %>
     </div>

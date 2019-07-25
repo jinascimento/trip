@@ -25,7 +25,6 @@ class BusesController < ApplicationController
   # POST /buses.json
   def create
     @bus = Bus.new(bus_params)
-
     respond_to do |format|
       if @bus.save
         format.html { redirect_to @bus, notice: 'Bus was successfully created.' }
@@ -69,6 +68,6 @@ class BusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bus_params
-      params.fetch(:bus, {})
+      params.require(:bus).permit(:name, :armchair, :license_plate)
     end
 end

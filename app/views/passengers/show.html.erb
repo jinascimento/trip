@@ -13,7 +13,10 @@
   <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
   <dd><%= @passenger.email %></dd>
   <dt><strong><%= model_class.human_attribute_name(:bus_id) %>:</strong></dt>
-  <dd><%= @passenger.bus_id %></dd>
+  <%= link_to bus_path(@passenger.bus.id) do %>
+    <dd><%= @passenger.bus.name %></dd>
+  <% end %>
+
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

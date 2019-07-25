@@ -16,30 +16,28 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
+    <%= f.label :nome, :class => 'control-label col-lg-2', required: true %>
+    <div class="col-lg-4">
       <%= f.text_field :name, :class => 'form-control' %>
     </div>
+    <%= f.label :'Número de Poltronas', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.number_field :armchair, :class => 'form-control', required: true %>
+    </div>
+    <%=f.error_span(:armchair) %>
     <%=f.error_span(:name) %>
   </div>
   <div class="form-group">
-    <%= f.label :armchair, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :armchair, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:armchair) %>
-  </div>
-  <div class="form-group">
     <%= f.label :license_plate, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :license_plate, :class => 'form-control' %>
+    <div class="col-lg-4">
+      <%= f.text_field :license_plate, :class => 'form-control', required: true %>
     </div>
     <%=f.error_span(:license_plate) %>
   </div>
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= f.submit 'Salvar', :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 buses_path, :class => 'btn btn-default' %>
     </div>
