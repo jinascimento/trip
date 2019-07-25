@@ -10,27 +10,27 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default" style="background: #00b38f;">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+      <div class="navbar-header" >
+        <button type="button" style="border-color: #ffffff;" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span style="background-color: #ffffff;" class="sr-only">Toggle navigation</span>
+          <span style="background-color: #ffffff;" class="icon-bar"></span>
+          <span style="background-color: #ffffff;" class="icon-bar"></span>
+          <span style="background-color: #ffffff;"  class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Excursão Top</a>
+        <a class="navbar-brand" style="color: #ffffff;" href="#">Excursão Top</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li class=<%= 'active' if params[:controller] == 'passengers' %>>
-            <%= link_to 'Passageiros', passengers_path %>
+            <%= link_to 'Passageiros', passengers_path, style: 'color: #ffffff;' %>
           </li>
           <li class=<%= 'active' if params[:controller] == 'buses' %>>
-            <%= link_to 'Ônibus', buses_path %>
+            <%= link_to 'Ônibus', buses_path, style: 'color: #ffffff;' %>
           </li>
         </ul>
       </div><!-- /.navbar-collapse -->
