@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_07_24_145022) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "buses", force: :cascade do |t|
     t.string "name"
     t.integer "armchair"
@@ -27,8 +30,9 @@ ActiveRecord::Schema.define(version: 2019_07_24_145022) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "bus_id"
+    t.bigint "bus_id"
     t.index ["bus_id"], name: "index_passengers_on_bus_id"
   end
 
+  add_foreign_key "passengers", "buses"
 end
