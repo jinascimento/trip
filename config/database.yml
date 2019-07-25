@@ -19,5 +19,5 @@ test:
 
 production:
   <<: *default
-  database: triphero
+  database: d2jc6lgpmimlus
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 15 } %>
