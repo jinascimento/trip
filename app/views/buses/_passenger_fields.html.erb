@@ -1,0 +1,31 @@
+<div class="nested-fields">
+  <div class="form-group">
+    <%= f.label :nome, :class => 'control-label col-lg-2', required: true %>
+    <div class="col-lg-4 field">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%= f.label :'Data de Nascimento', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4 field">
+      <%= f.date_field :birthdate, :class => 'form-control', required: true %>
+    </div>
+
+    <%=f.error_span(:name) %>
+    <%=f.error_span(:birthdate) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :'Número de documento', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4 field">
+      <%= f.number_field :national_registry_code, :class => 'form-control', required: true %>
+    </div>
+    <%= f.label :'E-mail', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4 field">
+      <%= f.text_field :email, :class => 'form-control', type: 'email', required: true %>
+    </div>
+    <%=f.error_span(:email) %>
+    <%=f.error_span(:national_registry_code) %>
+  </div>
+  <%= link_to_remove_association "remove experience", f %>
+
+  <br><br><br>
+</div>

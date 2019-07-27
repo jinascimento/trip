@@ -34,6 +34,19 @@
     </div>
     <%=f.error_span(:license_plate) %>
   </div>
+  <br>
+  <div class="form-group">
+    Passageiros
+    <div id="passengers">
+      <% f.fields_for :passengers do |p| %>
+        <%= render 'passenger_fields', f: p %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association 'Adicionar passageiros', f, :passengers %>
+        <br><br>
+      </div>
+    </div>
+  </div>
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
