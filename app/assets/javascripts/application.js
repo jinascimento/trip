@@ -16,4 +16,7 @@
 //= require jquery3
 //= require twitter/bootstrap
 //= require cocoon
+//= require select2
+//= require turbolinks
 //= require_tree .
+//= require_self

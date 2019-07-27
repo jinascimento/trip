@@ -61,6 +61,16 @@ class PassengersController < ApplicationController
     end
   end
 
+  def search
+    passengers = Passenger.where("name ILIKE ?", "%#{params[:term]}%").map{|item| {id: item.id, name: item.name}}
+
+    respond_to do |format|
+      format.json do
+        render json: passengers
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_passenger
