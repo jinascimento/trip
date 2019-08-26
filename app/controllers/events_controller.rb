@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: %i[show edit update destroy]
 
   def index
     @events = Event.all
@@ -7,6 +7,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @event.buses.build
   end
 
   def create
@@ -58,6 +59,8 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :date)
+    params.require(:event).permit(:name, :date, buses_attributes:
+        %i[name armchair license_plate]
+    )
   end
 end
