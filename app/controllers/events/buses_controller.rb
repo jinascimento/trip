@@ -56,7 +56,7 @@ class Events::BusesController < ApplicationController
   def destroy
     @bus.destroy
     respond_to do |format|
-      format.html { redirect_to event_buses_path(@bus.event, @bus), notice: 'Bus was successfully destroyed.' }
+      format.html { redirect_to event_path(@bus.event), notice: 'Bus was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

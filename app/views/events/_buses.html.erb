@@ -1,0 +1,38 @@
+<div class="collapse" id="collapseBus">
+  <div class="card card-body">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Identificador</th>
+        <th>Nome</th>
+        <th>Número de poltronas disponíveis</th>
+        <th>Placa</th>
+        <th>Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @event.buses.each do |bus| %>
+        <tr>
+          <td><%= link_to bus.id, event_bus_path(bus) %></td>
+          <td><%= bus.name %></td>
+          <td><%= bus.armchair %></td>
+          <td><%= bus.license_plate %></td>
+          <td>
+            <%= link_to t('.show', :default => t("helpers.links.show")),
+                        event_bus_path(bus.event, bus), :class => 'btn btn-default btn-xs' %>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_event_bus_path(bus.event, bus), :class => 'btn btn-default btn-xs' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        event_bus_path(bus.event, bus),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-xs btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
