@@ -1,4 +1,4 @@
-<%= form_for @bus, :html => { :class => "form-horizontal bus" } do |f| %>
+<%= form_for @bus, url: event_bus_path, :html => { :class => "form-horizontal bus" } do |f| %>
 
   <% if @bus.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -82,7 +82,7 @@
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit 'Salvar', :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                buses_path, :class => 'btn btn-default' %>
+                events_path, :class => 'btn btn-default' %>
     </div>
   </div>
 

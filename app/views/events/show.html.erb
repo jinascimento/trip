@@ -11,7 +11,7 @@
   <dt><strong><%= model_class.human_attribute_name(:bus_id) %>:</strong></dt>
   <% if @event.buses %>
     <% @event.buses.each do |b| %>
-      <%= link_to bus_path(b.id) do %>
+      <%= link_to event_bus_path(@event.id, b.id) do %>
         <dd><%= b.name %></dd>
       <% end %>
     <% end %>

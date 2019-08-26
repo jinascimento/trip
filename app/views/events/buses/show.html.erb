@@ -14,19 +14,21 @@
   <dd><%= @bus.license_plate %></dd>
   <br>
   <dt><strong>Passageiros</strong></dt>
-  <% @bus.passengers.each do |p| %>
-    <%= link_to passenger_path(p.id) do %>
-      <dd><%= p.name %></dd>
-    <% end %>
-  <% end %>
+  <%# if @bus.passengers.present? %>
+    <%# @bus.passengers.each do |p| %>
+      <%#= link_to passenger_path(p.id) do %>
+<!--        <dd><%#= p.name %></dd>-->
+      <%# end %>
+    <%# end %>
+  <%# end %>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              buses_path, :class => 'btn btn-default'  %>
+              event_path(@bus.event), :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_bus_path(@bus), :class => 'btn btn-default' %>
+              edit_event_bus_path(@bus.event, @bus), :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              bus_path(@bus),
+              event_bus_path(@bus),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
