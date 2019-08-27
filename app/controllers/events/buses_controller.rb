@@ -14,7 +14,7 @@ class Events::BusesController < ApplicationController
 
   # GET /buses/new
   def new
-    @bus = Bus.new
+    @bus = Event.find(params[:event_id]).buses.build
   end
 
   # GET /buses/1/edit
@@ -25,10 +25,11 @@ class Events::BusesController < ApplicationController
   # POST /buses
   # POST /buses.json
   def create
-    @bus = Bus.new(bus_params)
+    event = Event.find(params[:event_id])
+    @bus = event.buses.build(bus_params)
     respond_to do |format|
       if @bus.save
-        format.html { redirect_to event_bus_path(@bus.event, @bus), notice: 'Bus was successfully created.' }
+        format.html { redirect_to event_path(@bus.event), notice: 'Bus was successfully created.' }
         format.json { render :show, status: :created, location: @bus }
       else
         format.html { render :new }
