@@ -29,29 +29,6 @@
     <%=f.error_span(:date) %>
   </div>
   <br>
-  <h2>Ônibus</h2>
-  <%= f.fields_for :buses do |b| %>
-    <div class="form-group">
-      <%= b.label :nome, :class => 'control-label col-lg-2', required: true %>
-      <div class="col-lg-4">
-        <%= b.text_field :name, :class => 'form-control' %>
-      </div>
-      <%= b.label :'Número de Poltronas', :class => 'control-label col-lg-2' %>
-      <div class="col-lg-2">
-        <%= b.number_field :armchair, :class => 'form-control', required: true %>
-      </div>
-      <%= b.error_span(:armchair) %>
-      <%= b.error_span(:name) %>
-    </div>
-    <div class="form-group">
-      <%= b.label :license_plate, :class => 'control-label col-lg-2' %>
-      <div class="col-lg-4">
-        <%= b.text_field :license_plate, :class => 'form-control', required: true %>
-      </div>
-      <%= b.error_span(:license_plate) %>
-    </div>
-  <% end %>
-
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">

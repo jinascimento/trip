@@ -49,9 +49,10 @@ class Events::Buses::PassengersController < ApplicationController
   # DELETE /passengers/1
   # DELETE /passengers/1.json
   def destroy
+    bus = @passenger.bus
     @passenger.destroy
     respond_to do |format|
-      format.html { redirect_to passengers_url, notice: 'Passenger was successfully destroyed.' }
+      format.html { redirect_to event_bus_path(bus.event, bus), notice: 'Passenger was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
