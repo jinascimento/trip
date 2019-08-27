@@ -1,0 +1,43 @@
+<div class="collapse" id="collapsePassenger">
+  <div class="card card-body">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Identificador</th>
+          <th>Nome</th>
+          <th>Data de nascimento</th>
+          <th>Documento</th>
+          <th>E-mail</th>
+          <th>Onibus</th>
+          <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @bus.passengers.each do |passenger| %>
+          <tr>
+            <td><%= passenger.id %></td>
+            <td><%= passenger.name %></td>
+            <td><%= passenger.birthdate.strftime("%d/%m/%Y") %></td>
+            <td><%= passenger.national_registry_code %></td>
+            <td><%= passenger.email %></td>
+            <td><%= passenger.bus ? passenger.bus.name : '' %></td>
+            <td>
+              <%= link_to t('.show', :default => t("helpers.links.show")),
+                          event_bus_passenger_path(passenger.bus.event, passenger.bus, passenger), :class => 'btn btn-default btn-xs' %>
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                          edit_event_bus_passenger_path(passenger.bus.event, passenger.bus, passenger), :class => 'btn btn-default btn-xs' %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                          event_bus_passengers_path(passenger.bus.event, passenger.bus, passenger),
+                          :method => :delete,
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                          :class => 'btn btn-xs btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <%= link_to 'Adicionar passageiro', new_event_bus_passenger_path(@bus.event, @bus), class: 'btn btn-primary' %>
+</div>

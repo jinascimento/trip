@@ -13,14 +13,7 @@
   <dt><strong>Placa do veículo</strong></dt>
   <dd><%= @bus.license_plate %></dd>
   <br>
-  <dt><strong>Passageiros</strong></dt>
-  <%# if @bus.passengers.present? %>
-    <%# @bus.passengers.each do |p| %>
-      <%#= link_to passenger_path(p.id) do %>
-<!--        <dd><%#= p.name %></dd>-->
-      <%# end %>
-    <%# end %>
-  <%# end %>
+
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
@@ -32,3 +25,14 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+
+<br>
+<br>
+<br>
+<button class="btn-sm btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsePassenger" aria-expanded="false" aria-controls="collapsePassenger">
+  Visualizar Passageiros
+</button>
+<br>
+
+<%= render 'passengers' %>
+

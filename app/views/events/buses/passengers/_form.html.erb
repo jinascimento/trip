@@ -1,4 +1,4 @@
-<%= form_for @passenger, :html => { :class => "form-horizontal passenger" } do |f| %>
+<%= form_for [@passenger.bus.event, @passenger.bus, @passenger], :html => { :class => "form-horizontal passenger" } do |f| %>
 
   <% if @passenger.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -52,7 +52,7 @@
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit 'Salvar', :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                passengers_path, :class => 'btn btn-default' %>
+                event_bus_path(@passenger.bus.event, @passenger.bus), :class => 'btn btn-default' %>
     </div>
   </div>
 

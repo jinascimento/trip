@@ -1,4 +1,4 @@
-<%= form_for @bus, url: event_buses_path, :html => { :class => "form-horizontal bus" } do |f| %>
+<%= form_for [@bus.event, @bus], :html => { :class => "form-horizontal bus" } do |f| %>
 
   <% if @bus.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -35,48 +35,6 @@
     <%=f.error_span(:license_plate) %>
   </div>
   <br>
-  <div class="form-group">
-    <h2>Passageiros</h2>
-    <% @bus.passengers.each do |p| %>
-      <div class="form-group">
-        <%= f.label :nome, :class => 'control-label col-lg-2', required: true %>
-        <div class="col-lg-4 field">
-          <%= f.text_field :name, value: p.name, :class => 'form-control' %>
-        </div>
-        <%= f.label :'Data de Nascimento', :class => 'control-label col-lg-2' %>
-        <div class="col-lg-4 field">
-          <%= f.date_field :birthdate, value: p.birthdate.strftime('%Y-%m-%d'), :class => 'form-control', required: true %>
-        </div>
-
-        <%=f.error_span(:name) %>
-        <%=f.error_span(:birthdate) %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :'Número de documento', :class => 'control-label col-lg-2' %>
-        <div class="col-lg-4 field">
-          <%= f.number_field :national_registry_code, value: p.national_registry_code, :class => 'form-control', required: true %>
-        </div>
-        <%= f.label :'E-mail', :class => 'control-label col-lg-2' %>
-        <div class="col-lg-4 field">
-          <%= f.text_field :email, value: p.email, :class => 'form-control', type: 'email', required: true %>
-        </div>
-        <%=f.error_span(:email) %>
-        <%=f.error_span(:national_registry_code) %>
-      </div>
-      <br>
-    <% end %>
-
-    <div id="passengers">
-      <% f.fields_for :passengers do |p| %>
-        <%= render 'passenger_fields', f: p %>
-      <% end %>
-      <div class="links">
-        <%= link_to_add_association 'Adicionar passageiros', f, :passengers %>
-        <br><br>
-      </div>
-    </div>
-  </div>
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
