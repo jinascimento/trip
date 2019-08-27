@@ -15,9 +15,8 @@
     <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= link_to event.id, event_path(event) %></td>
         <td><%= event.name %></td>
-        <td><%= event.done %></td>
+        <td><%= event.done ? "Concluído" : "Em aberto" %></td>
         <td><%= event.date.strftime("%d/%m/%Y") %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
